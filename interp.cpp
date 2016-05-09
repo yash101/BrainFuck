@@ -23,7 +23,10 @@ int interp(char* programCode)
   do
   {
     if(*cpos == ']') {
-      *jmpStack--;
+      if(*tape == 0)
+        jmpStack--;
+      else
+        cpos = (*--jmpStack);
     }
 
     if(*cpos == '[') {
